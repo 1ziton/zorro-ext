@@ -1,6 +1,6 @@
 
 import { NgModule } from '@angular/core';
-import { API } from '../../../custom-components/services/api';
+import { API } from '../../../custom-components/lib/services/api';
 
 @NgModule({
   imports: [],

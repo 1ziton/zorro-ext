@@ -5,11 +5,11 @@ import { JsonpModule } from '@angular/http';
 
 import { UIGridDemoRoutingModule } from './ui-grid-demo.routing.module';
 import { NzCodeBoxModule } from '../../share/nz-codebox/nz-codebox.module';
-import { YztCustomModule } from '../../../custom-components/yzt-custom.module';
+import { YztCustomModule } from '../../../custom-components/lib/yzt-custom.module';
 import { UIGridDemoComponent } from './ui-grid-demo.component';
 
 import { UIGridBasicComponent } from './ui-grid-basic.component';
-import { GridUtilService } from '../../../custom-components/ui-grid/share/grid-util.service';
+import { GridUtilService } from '../../../custom-components/lib/ui-grid/share/grid-util.service';
 import { RandomUserService } from '../../nz-demo-table/nz-demo-table-ajax.component';
 
 @NgModule({

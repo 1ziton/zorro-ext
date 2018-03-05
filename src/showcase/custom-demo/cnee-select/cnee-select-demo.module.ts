@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { JsonpModule } from '@angular/http';
 
 import { NzCodeBoxModule } from '../../share/nz-codebox/nz-codebox.module';
-import { YztCustomModule } from '../../../custom-components/yzt-custom.module';
+import { YztCustomModule } from '../../../custom-components/lib/yzt-custom.module';
 import { CneeSelectDemoComponent } from "./cnee-select-demo.component";
 import { CneeSelectDemoRoutingModule } from "./cnee-select-demo.routing.module";
 import { CneeSelectDemoBasicComponent } from "./cnee-select-demo-basic.component";

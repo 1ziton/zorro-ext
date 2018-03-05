@@ -1,36 +1,35 @@
 import { Component, OnInit, Input, forwardRef, NgModule, TemplateRef, Output, EventEmitter, ViewChild, ViewContainerRef, ElementRef, ContentChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from "@angular/forms";
 import { CommonModule, NgForOfContext } from "@angular/common";
-import { NgZorroAntdModule } from '../../../index.showcase';
+import { NgZorroAntdModule } from '../../../../index.showcase';
 import { API } from '../services/api';
 import { Subject } from 'rxjs/Rx';
 
-export interface Master {
-    preview: string;
-    realName?: string;
-    mobile?: string;
+export interface Shipper {
+    name: string;
     id?: string;
+    idBak?: string;
+    mobile?: string;
     disabled?: boolean;
 }
 
 export interface DomOpt {
-    hasBankCard: boolean;
-    mobile: string;
-    realName: string;
+    _value: string;
+    _label: string;
 }
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => MasterSelectComponent),
+    useExisting: forwardRef(() => ShipperSelectComponent),
     multi: true
 };
 
 @Component({
-    selector: `yzt-master`,
+    selector: `yzt-shipper`,
     template: `
-    <div class="master-select">
+    <div class="shipper-select">
         <nz-select 
-            class="master-nz-select"
+            class="shipper-nz-select"
             [style.width]="_width" 
             [nzPlaceHolder]="placeholder" 
             [nzMode]="_nzMode"
@@ -41,8 +40,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
             <nz-option
                 #domOpt
                 *ngFor="let option of options"
-                [nzLabel]="option.preview"
-                [nzValue]="option"
+                [nzLabel]="option.name"
+                [nzValue]="option.idBak"
                 [nzDisabled]="option.disabled">
                 <ng-template *ngIf="_content" #nzOptionTemplate>
                     <ng-container #nzOptionCon [ngTemplateOutlet]="_content" [ngTemplateOutletContext]="option"></ng-container>
@@ -50,16 +49,16 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
             </nz-option>
         </nz-select>
         <span
-        role="close-icon"
-        (click)="clearSelect($event)"
-        class="ant-select-selection__clear close-icon"
-        style="-webkit-user-select: none;"
-        *ngIf="!_allowClear&&options.length">
+          role="close-icon"
+          (click)="clearSelect($event)"
+          class="ant-select-selection__clear close-icon"
+          style="-webkit-user-select: none;"
+          *ngIf="!_allowClear&&options.length">
         </span>
     </div>
     `,
     styles: [`
-    .master-select{
+    .shipper-select{
         position: relative;
     }
     .close-icon {
@@ -72,19 +71,19 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     .close-icon:hover {
         opacity: 1;
     }
-    .master-nz-select:hover +.close-icon {
+    .shipper-nz-select:hover +.close-icon {
         opacity: 1;
     }
     `],
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
-export class MasterSelectComponent implements ControlValueAccessor, OnInit {
+export class ShipperSelectComponent implements ControlValueAccessor, OnInit {
 
     @ViewChild("domOpt") domOpt: DomOpt;
     private onTouchedCallback: () => () => {};
     private onChangeCallback: (_: any) => () => {};
 
-    options: Array<Master> = [];
+    options: Array<Shipper> = [];
     // 单选的时候传字符串，多选传数组
     _value: string;
     _width = "100%";
@@ -97,30 +96,28 @@ export class MasterSelectComponent implements ControlValueAccessor, OnInit {
     canQuery = true;
     keyWordStream = new Subject<string>()
     keyWord$: any;
-    regExpNum: RegExp = /^[0-9]*$/;
 
-    @Input() placeholder = "请输入收货人";
-    // 需要获取的值类型
-    @Input() valueType = "object";
-    // 显示在输入框的值（名字、电话、名字+电话）
-    @Input() valueField = "realName";
+    @Input() placeholder = "请输入发货人";
+    @Input() valueType = "";
 
-    // 设置属性，并触发监听器
-    set value(v: any) {
-        if (typeof v === 'string' && v.trim() === '' || !v)
+    set value(v: string) {
+        if(typeof v === 'string' && v.trim() === '' || !v) {
+            this.options = [];
+            this.currentText = '';
             this.queryData('', []);
+        }
         this._value = v;
         // 双向绑定获取对象
         if (this.valueType === "object") {
-            this.onChangeCallback(v);
+            const { _value, _label } = this.domOpt;
+            this.onChangeCallback({ value: _value, label: _label });
         } else {
-            let realName = v.realName || v;
-            let mobile = v.mobile || v;
-            this.valueType === "mobile" ? this.onChangeCallback(mobile) : this.onChangeCallback(realName);
+            this.onChangeCallback(v);
         }
+
     }
 
-    get value(): any {
+    get value(): string {
         return this._value;
     };
 
@@ -199,29 +196,19 @@ export class MasterSelectComponent implements ControlValueAccessor, OnInit {
      * 查询数据
      * @param $event
      */
-    queryData(searchText?: string, options?: Array<Master>) {
+    queryData(searchText?: string, options?: Array<Shipper>) {
         if (!this.canQuery) return;
-
-        let qryParams = {
-            realName: "",
-            mobile: ""
-        }
-        if (this.regExpNum.test(searchText)) {
-            qryParams.mobile = searchText;
-        } else {
-            qryParams.realName = searchText;
-        }
-
-        this.api.call("UserWorkerController.findMasterByNameOrAccount", qryParams).ok(json => {
+        const value = searchText;
+        this.api.call("customerWorkerController.queryShipperNameLike",{
+            name: value,
+            clientType:"send"
+        }).ok(json => {
             const result = json.result || [];
             this.options = result;
-            this.options.forEach(item => {
-                item.preview = item[this.valueField];
-            });
             this.outOptions.emit(this.options);
         }).fail(err => {
             if (!this.options.length) {
-                const lastItem = new Array<Master>({ id: "empty", preview: "没有更多选项！", disabled: true });
+                const lastItem = new Array<Shipper>({ id: "empty", name: "没有更多选项！", disabled: true });
                 this.options = options.concat(lastItem);
                 this.canQuery = false;
                 return;
@@ -240,8 +227,8 @@ export class MasterSelectComponent implements ControlValueAccessor, OnInit {
         NgZorroAntdModule,
     ],
     declarations: [
-        MasterSelectComponent
+        ShipperSelectComponent
     ],
-    exports: [MasterSelectComponent]
+    exports: [ShipperSelectComponent]
 })
-export class MasterSelectModule { }
+export class ShipperSelectModule {}

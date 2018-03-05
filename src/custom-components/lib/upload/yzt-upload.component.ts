@@ -5,7 +5,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 
 import { BASEURL } from "../services/api";
-import { NzUploadModule, NzMessageService, UploadFile } from "../../components/ng-zorro-antd.module";
+import { NzUploadModule, NzMessageService, UploadFile } from "../../../components/ng-zorro-antd.module";
 import { YztUploadFile } from "./interface";
 
 @Component({

@@ -1,37 +1,37 @@
 <article>
     <section class="markdown">
-        <h1>yzt-department 开单网点</h1>
+        <h1>yzt-meta 字典</h1>
         <section class="markdown">
-            <p>使用nz-select组件封装开单网点选择组件</p>
+            <p>使用nz-select组件封装字典选择组件</p>
             <h2 id="何时使用"><span>如何使用</span>
                 <a class="anchor">#</a>
             </h2>
-            <p>输入开单网点关键字，显示开单网点，如果只输入数字会根据电话查找对应的开单网点，否则根据网点模糊搜索</p>
+            <p>输入字典关键字，显示字典，如果只输入数字会根据电话查找对应的字典，否则根据字典模糊搜索</p>
         </section>
         <h2>代码演示<i class="code-box-expand-trigger anticon anticon-appstore" title="展开全部代码"></i></h2>
     </section>
     <div nz-row [nzGutter]="8">
         <div nz-col [nzSpan]="12">
-            <nz-code-box [nzTitle]="'基本使用'" id="department-select-demo-basic" [nzCode]="DepartmentSelectDemoBasicCode">
-                <department-select-demo-basic demo></department-select-demo-basic>
+            <nz-code-box [nzTitle]="'基本使用'" id="meta-select-demo-basic" [nzCode]="MetaSelectDemoBasicCode">
+                <meta-select-demo-basic demo></meta-select-demo-basic>
                 <div intro>
                     <p>默认不传任何属性。</p>
                 </div>
             </nz-code-box>
         </div>
         <div nz-col [nzSpan]="12">
-            <nz-code-box [nzTitle]="'valueType属性'" id="department-select-demo-valueType" [nzCode]="DepartmentSelectDemoValueTypeCode">
-                <department-select-demo-valueType demo></department-select-demo-valueType>
+            <nz-code-box [nzTitle]="'metaMode多选属性'" id="meta-select-demo-multiple" [nzCode]="MetaSelectDemoMultipleCode">
+                <meta-select-demo-multiple demo></meta-select-demo-multiple>
                 <div intro>
-                    <p>改变valueType可获取不同字段的值，姓名</p>
+                    <p>下拉框支持多选功能，并返回数组的形式(配合vauleType属性使用)</p>
                 </div>
             </nz-code-box>
         </div>
         <div nz-col [nzSpan]="12">
-            <nz-code-box [nzTitle]="'自定义模板'" id="department-select-demo-template" [nzCode]="DepartmentSelectDemoTemplateCode">
-                <department-select-demo-template demo></department-select-demo-template>
+            <nz-code-box [nzTitle]="'自定义模板'" id="meta-select-demo-template" [nzCode]="MetaSelectDemoTemplateCode">
+                <meta-select-demo-template demo></meta-select-demo-template>
                 <div intro>
-                    <p>使用[customCompanyTemplate]传入公司名称template模板,[customDepartmentTemplate]传入部门template模板，可以实现自定义下拉框样式及定制内容</p>
+                    <p>使用[customTemplate]传入template模板，可以实现自定义下拉框样式及定制内容</p>
                 </div>
             </nz-code-box>
         </div>
@@ -67,25 +67,38 @@
                     <td>
                         String
                     </td>
-                    <td>请选择开单网点</td>
+                    <td>请选择</td>
+                </tr>
+                <tr>
+                    <td>metaType(字典类型)</td>
+                    <td>service（服务类型），repair（维修类型），fhreturn（返货类型）， riskReason（出险原因），
+                        specifyLogistics（指定物流），abnormalDuty（异常责任方），complement（补件-任务类型），
+                        transportCompany（物流公司）， goodsunit（商品单位），abnormalHandleWay（异常处理方式）
+                    </td>
+                    <td>
+                        String
+                    </td>
+                    <td>abnormalHandleWay（异常处理方式）</td>
                 </tr>
                 <tr>
                     <td>valueType</td>
-                    <td>向上返回开单网点id、姓名、对象，'compayId'|'compayName'|'object'</td>
+                    <td>返回字典id、姓名、对象，'id'|'name'|'object'</td>
                     <td>
                         String
                     </td>
                     <td>'object'</td>
                 </tr>
                 <tr>
-                    <td>customCompanyTemplate</td>
-                    <td>支持自定义公司名称下拉选项，传入模板</td>
-                    <td>TemplateRef</td>
+                    <td>metaMode</td>
+                    <td>设置 Select 的模式,默认单选</td>
+                    <td>
+                        'multiple'
+                    </td>
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td>customDepartmentTemplate</td>
-                    <td>支持自定义部门名称下拉选项，传入模板</td>
+                    <td>customTemplate</td>
+                    <td>支持自定义公司名称下拉选项，传入模板</td>
                     <td>TemplateRef</td>
                     <td>-</td>
                 </tr>

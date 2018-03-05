@@ -4,7 +4,7 @@ import { NzMessageService } from "../../../components/ng-zorro-antd.module";
 @Component({
     selector: 'master-select-demo-valueType',
     template: `
-    <yzt-master [(ngModel)]="valueMobile" [valueType]="'mobile'"></yzt-master>
+    <yzt-master [(ngModel)]="valueMobile" [valueType]="'mobile'" [OptionMode]="'multiple'"></yzt-master>
     <button nz-button [nzType]="'primary'" (click)="handleMobile()">获取师傅电话/ID</button>
     <p style="padding: 5px;"></p>
     <yzt-master [(ngModel)]="valueName" [valueType]="'name'"></yzt-master>

@@ -13,7 +13,7 @@ import {
 } from "@angular/core";
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { NzInputModule } from "../../components/ng-zorro-antd.module";
+import { NzInputModule } from "../../../components/ng-zorro-antd.module";
 
 const noop = () => {
 };

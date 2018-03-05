@@ -4,7 +4,7 @@ import { FormsModule, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/f
 import { UISelectBoxModule } from '../select-box/select-box.component';
 import { Subject } from 'rxjs';
 import { API } from '../services/api';
-import { NgZorroAntdModule } from '../../components/ng-zorro-antd.module';
+import { NgZorroAntdModule } from '../../../components/ng-zorro-antd.module';
 
 export interface Department {
     compayId: string;
@@ -38,13 +38,13 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
         [nzAllowClear]="_allowClear"
         (nzSearchChange)="yztSearchChange($event)"
         [(ngModel)]="value">
-        <nz-option #domOpt *ngFor="let option of options;let i=$index" [nzDisabled]='true' nzValue='_parent_{{i}}'>
-            <ng-template #nzOptionTemplate>
-                {{option.compayName}}
+        <nz-option #domOpt *ngFor="let option of options;let i=$index" [nzLabel]="option.compayName" [nzDisabled]='true' nzValue='_parent_{{i}}'>
+            <ng-template *ngIf="_contentCompany" #nzOptionTemplate>
+                <ng-container [ngTemplateOutlet]="_contentCompany" [ngTemplateOutletContext]="option"></ng-container>
             </ng-template>
             <nz-option *ngFor="let obj of option.departments" [nzLabel]="obj.name" [nzValue]="obj">
-                <ng-template #nzOptionTemplate>
-                    {{obj.name}}
+                <ng-template *ngIf="_contentDepartment" #nzOptionTemplate>
+                    <ng-container [ngTemplateOutlet]="_contentDepartment" [ngTemplateOutletContext]="obj"></ng-container>
                 </ng-template>
             </nz-option>
         </nz-option>
@@ -87,6 +87,8 @@ export class DepartmentSelectComponent implements ControlValueAccessor,OnInit {
     canQuery = true;
     keyWordStream = new Subject<string>()
     keyWord$: any;
+    _contentCompany: TemplateRef<any>;
+    _contentDepartment: TemplateRef<any>;
 
     @Input() placeholder = "请输入网点";
     // 需要获取的值类型
@@ -114,6 +116,18 @@ export class DepartmentSelectComponent implements ControlValueAccessor,OnInit {
     @Input() set width(v: any) {
         const width = parseInt(v);
         this._width = Array.from(v).includes("%") ? `${v}%` : isNaN(width) ? this._width : `${width}px`;
+    }
+
+    @Input() set customCompanyTemplate(tpl: TemplateRef<any>) {
+        if (tpl instanceof TemplateRef) {
+            this._contentCompany = tpl;
+        }
+    }
+
+    @Input() set customDepartmentTemplate(tpl: TemplateRef<any>) {
+        if (tpl instanceof TemplateRef) {
+            this._contentDepartment = tpl;
+        }
     }
 
     @Output() openChange: EventEmitter<any> = new EventEmitter();

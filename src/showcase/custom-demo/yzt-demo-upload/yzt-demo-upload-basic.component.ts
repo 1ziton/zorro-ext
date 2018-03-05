@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { YztUploadFile } from '../../../custom-components/yzt-custom.module';
+import { YztUploadFile } from '../../../custom-components/lib/yzt-custom.module';
 
 @Component({
   selector: 'yzt-demo-upload-basic',

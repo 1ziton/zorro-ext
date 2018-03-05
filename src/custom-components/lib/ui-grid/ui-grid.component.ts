@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { NgZorroAntdModule } from '../../../index.showcase';
+import { NgZorroAntdModule } from '../../../../index.showcase';
 import { GridUtilService } from './share/grid-util.service';
 import { API } from '../services/api';
 import { DirectivesModule } from '../share/directives/yzt-directives.modules';

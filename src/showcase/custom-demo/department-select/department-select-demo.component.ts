@@ -10,5 +10,6 @@ export class DepartmentSelectDemoComponent {
 
     DepartmentSelectDemoBasicCode = require('!!raw-loader!./department-select-demo-basic.component');
     DepartmentSelectDemoValueTypeCode = require('!!raw-loader!./department-select-demo-valueType.component');
+    DepartmentSelectDemoTemplateCode = require('!!raw-loader!./department-select-demo-template.component');
 
 }

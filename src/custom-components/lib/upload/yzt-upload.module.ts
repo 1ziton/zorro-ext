@@ -3,7 +3,7 @@ import { FormsModule } from "@angular/forms";
 import { NgModule } from "@angular/core";
 import { YztUploadComponent } from "./yzt-upload.component";
 
-import { NgZorroAntdModule } from "../../components/ng-zorro-antd.module";
+import { NgZorroAntdModule } from "../../../components/ng-zorro-antd.module";
 
 
 @NgModule({

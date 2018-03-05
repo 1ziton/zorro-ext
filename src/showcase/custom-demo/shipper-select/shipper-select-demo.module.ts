@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { JsonpModule } from '@angular/http';
 
 import { NzCodeBoxModule } from '../../share/nz-codebox/nz-codebox.module';
-import { YztCustomModule } from '../../../custom-components/yzt-custom.module';
+import { YztCustomModule } from '../../../custom-components/lib/yzt-custom.module';
 import { ShipperSelectDemoComponent } from "./shipper-select-demo.component";
 import { ShipperSelectDemoRoutingModule } from "./shipper-select-demo.routing.module";
 import { ShipperSelectDemoBasicComponent } from "./shipper-select-demo-basic.component";

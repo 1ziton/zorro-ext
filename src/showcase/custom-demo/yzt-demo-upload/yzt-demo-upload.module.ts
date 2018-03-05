@@ -15,7 +15,7 @@ import { YztDemoUploadFilterComponent } from './yzt-demo-upload-filter.component
 import { YztDemoUploadPictureStyleComponent } from './yzt-demo-upload-picture-style.component';
 import { YztDemoUploadDragComponent } from './yzt-demo-upload-drag.component';
 import { YztDemoUploadManuallyComponent } from './yzt-demo-upload-manually.component';
-import { YztUploadModule } from '../../../custom-components/yzt-custom.module';
+import { YztUploadModule } from '../../../custom-components/lib/yzt-custom.module';
 
 @NgModule({
   imports     : [ YztDemoUploadRoutingModule, CommonModule, NzCodeBoxModule,YztUploadModule, NgZorroAntdModule, FormsModule ],

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { YztCustomModule } from '../../../custom-components/yzt-custom.module';
+import { YztCustomModule } from '../../../custom-components/lib/yzt-custom.module';
 import { NgZorroAntdModule } from '../../../components/ng-zorro-antd.module';
 import { EchartsDemoComponent } from './echarts-demo.component';
 import { EchartsDemoMapComponent } from './echarts-demo-map.component';
@@ -11,7 +11,7 @@ import { EchartsDemoPieComponent } from './echarts-demo-pie.component';
 import { EchartsDemoClickComponent } from './echarts-demo-click.component';
 import { EchartsDemoLineComponent } from './echarts-demo-line.component';
 import { EchartsDemoRoutingModule } from './echarts-demo.routing.module';
-import { EchartsModule } from '../../../custom-components/echarts/echarts.component';
+import { EchartsModule } from '../../../custom-components/public_api';
 import { NzCodeBoxModule } from '../../share/nz-codebox/nz-codebox.module';
 
 @NgModule({

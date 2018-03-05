@@ -1,23 +1,15 @@
-import {
-    Component,
-    OnInit,
-    Input,
-    forwardRef,
-    NgModule,
-    TemplateRef,
-    Output,
-    EventEmitter,
-    ViewChild
-} from '@angular/core';
+import { Component, OnInit, Input, forwardRef, NgModule, TemplateRef, Output, EventEmitter, ViewChild, ViewContainerRef, ElementRef, ContentChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from "@angular/forms";
-import { CommonModule } from "@angular/common";
-import { NgZorroAntdModule } from '../../../index.showcase';
+import { CommonModule, NgForOfContext } from "@angular/common";
+import { NgZorroAntdModule } from '../../../../index.showcase';
 import { API } from '../services/api';
 import { Subject } from 'rxjs/Rx';
 
-export interface GoodOpt {
+export interface Cnee {
     name: string;
-    goodId?: string;
+    id?: string;
+    idBak?: string;
+    mobile?: string;
     disabled?: boolean;
 }
 
@@ -28,69 +20,70 @@ export interface DomOpt {
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => GoodSelectComponent),
+    useExisting: forwardRef(() => CneeSelectComponent),
     multi: true
 };
+
 @Component({
-    selector: `yzt-good`,
+    selector: `yzt-cnee`,
     template: `
-    <div class="good-select">
+    <div class="cnee-select">
         <nz-select 
-            class="good-nz-select"
+            class="cnee-nz-select"
             [style.width]="_width" 
             [nzPlaceHolder]="placeholder" 
             [nzMode]="_nzMode"
             [nzFilter]="_filter"
             [nzAllowClear]="_allowClear"
-            (nzScrollToBottom)="yztScrollToBottom()"
             (nzSearchChange)="yztSearchChange($event)"
             [(ngModel)]="value">
             <nz-option
                 #domOpt
                 *ngFor="let option of options"
                 [nzLabel]="option.name"
-                [nzValue]="option.goodId"
+                [nzValue]="option.idBak"
                 [nzDisabled]="option.disabled">
                 <ng-template *ngIf="_content" #nzOptionTemplate>
-                    <ng-container [ngTemplateOutlet]="_content" [ngTemplateOutletContext]="option"></ng-container>
+                    <ng-container #nzOptionCon [ngTemplateOutlet]="_content" [ngTemplateOutletContext]="option"></ng-container>
                 </ng-template>
             </nz-option>
         </nz-select>
         <span
-          role="close-icon"
-          (click)="clearSelect($event)"
-          class="ant-select-selection__clear close-icon"
-          style="-webkit-user-select: none;"
-          *ngIf="!_allowClear&&options.length">
+        role="close-icon"
+        (click)="clearSelect($event)"
+        class="ant-select-selection__clear close-icon"
+        style="-webkit-user-select: none;"
+        *ngIf="!_allowClear&&options.length">
         </span>
     </div>
     `,
     styles: [`
-        .close-icon {
-            opacity: 0;
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            margin-top: -10px;
-        }
-        .close-icon:hover {
-            opacity: 1;
-        }
-        .good-nz-select:hover +.close-icon {
-            opacity: 1;
-        }
-        .good-select {
-            position: relative;
-        }
+    .cnee-select{
+        position: relative;
+    }
+    .close-icon {
+        opacity: 0;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        margin-top: -10px;
+    }
+    .close-icon:hover {
+        opacity: 1;
+    }
+    .cnee-nz-select:hover +.close-icon {
+        opacity: 1;
+    }
     `],
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
-export class GoodSelectComponent implements ControlValueAccessor, OnInit {
+export class CneeSelectComponent implements ControlValueAccessor, OnInit {
+
     @ViewChild("domOpt") domOpt: DomOpt;
     private onTouchedCallback: () => () => {};
     private onChangeCallback: (_: any) => () => {};
 
-    options: Array<GoodOpt> = [];
+    options: Array<Cnee> = [];
     // 单选的时候传字符串，多选传数组
     _value: string;
     _width = "100%";
@@ -100,28 +93,23 @@ export class GoodSelectComponent implements ControlValueAccessor, OnInit {
     // 下拉过滤含关键字选项，false为不过滤
     _filter = false;
     currentText = '';
-    firstNum = 0;
     canQuery = true;
     keyWordStream = new Subject<string>()
     keyWord$: any;
 
-    @Input() placeholder = "请选择品名";
-    @Input() rowsNum = 10;
+    @Input() placeholder = "请输入收货人";
     @Input() valueType = "";
 
     set value(v: string) {
-        if(typeof v === 'string' && v.trim() === '' || !v) {
-            this.firstNum = 0;
+        if(typeof v === 'string' && v.trim() === '' || !v) 
             this.queryData('', []);
-        }
         this._value = v;
         // 双向绑定获取对象
         if (this.valueType === "object") {
             const { _value, _label } = this.domOpt;
             this.onChangeCallback({ value: _value, label: _label });
         } else {
-            const innerValue = this._allowClear ? (v || "") : (v || []);
-            this.onChangeCallback(innerValue);
+            this.onChangeCallback(v);
         }
 
     }
@@ -135,7 +123,7 @@ export class GoodSelectComponent implements ControlValueAccessor, OnInit {
         this._width = Array.from(v).includes("%") ? `${v}%` : isNaN(width) ? this._width : `${width}px`;
     }
 
-    @Input() set goodMode(v) {
+    @Input() set OptionMode(v) {
         this._nzMode = v;
         this._allowClear = v === "combobox" ? true : false;
     };
@@ -146,6 +134,9 @@ export class GoodSelectComponent implements ControlValueAccessor, OnInit {
         }
     }
 
+    @Output() openChange: EventEmitter<any> = new EventEmitter();
+    @Output() outOptions: EventEmitter<any> = new EventEmitter();
+
     constructor(private api: API) {
     }
 
@@ -154,13 +145,31 @@ export class GoodSelectComponent implements ControlValueAccessor, OnInit {
         this.keyWord$ = this.keyWordStream
             .debounceTime(250)
             .subscribe(word => {
-                this.queryData(word, []);
+                this.queryData(word, [])
             });
 
     }
 
     ngOnDestroy() {
         this.keyWord$.unsubscribe()
+    }
+
+    yztSearchChange(event) {
+        this.canQuery = true;
+        this.currentText = event;
+        this.keyWordStream.next(event);
+    }
+
+    /** 
+     * 仅作清空多选选项
+     */
+    clearSelect($event?: MouseEvent): void {
+        if ($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+        }
+        this.options = [];
+        this.value = '';
     }
 
     // 写入值
@@ -180,53 +189,32 @@ export class GoodSelectComponent implements ControlValueAccessor, OnInit {
         this.onTouchedCallback = fn;
     }
 
-    yztSearchChange(event) {
-        this.canQuery = true;
-        this.currentText = event;
-        this.firstNum = 0;
-        this.keyWordStream.next(event);
-    }
-
-    yztScrollToBottom() {
-        this.queryData(this.currentText, this.options);
-    }
-
-    /** 
-     * 仅作清空多选选项
-     */
-    clearSelect($event?: MouseEvent): void {
-        if ($event) {
-            $event.preventDefault();
-            $event.stopPropagation();
-        }
-        this.options = [];
-        this.value = '';
-    }
-
     /**
      * 查询数据
      * @param $event
      */
-    queryData(searchText?: string, options?: Array<GoodOpt>) {
+    queryData(searchText?: string, options?: Array<Cnee>) {
         if (!this.canQuery) return;
-        const goodName = searchText;
-        let pageParms = { "first": this.firstNum, "rows": this.rowsNum };
-        this.api.call("abnormalOtherHandleController.waybillGoodsQuery", pageParms, {
-            name: goodName
+        const value = searchText;
+        this.api.call("customerWorkerController.queryShipperNameLike", {
+            name: value,
+            clientType: "receive"
         }).ok(json => {
-            const result = json.result && json.result.content || [];
-            if (!result.length) {
-                const lastItem = new Array<GoodOpt>({ goodId: "empty", name: "没有更多选项！", disabled: true });
+            const result = json.result || [];
+            this.options = result;
+            this.outOptions.emit(this.options);
+        }).fail(err => {
+            if (!this.options.length) {
+                const lastItem = new Array<Cnee>({ id: "empty", name: "没有更多选项！", disabled: true });
                 this.options = options.concat(lastItem);
                 this.canQuery = false;
                 return;
             }
-            this.options = options.concat(result);
-            this.firstNum += this.rowsNum;
-        }).fail(err => {
             throw new Error(err);
         });
     }
+
+
 }
 
 @NgModule({
@@ -236,8 +224,8 @@ export class GoodSelectComponent implements ControlValueAccessor, OnInit {
         NgZorroAntdModule,
     ],
     declarations: [
-        GoodSelectComponent
+        CneeSelectComponent
     ],
-    exports: [GoodSelectComponent]
+    exports: [CneeSelectComponent]
 })
-export class GoodSelectModule { }
+export class CneeSelectModule { }

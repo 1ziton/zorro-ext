@@ -6,16 +6,17 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 // Services
+import { API } from './services/api';
 
 // Directives
 import { DirectivesModule } from './share/directives/yzt-directives.modules';
 
 // Tokens (eg. global services' config)
-import { NzRootConfig } from '../components/ng-zorro-antd.module';
+import { NzRootConfig } from '../../components/ng-zorro-antd.module';
 
 // Modules
 import { GoodSelectModule } from './good-select/good-select.component';
-import { NgZorroAntdModule } from '../components/ng-zorro-antd.module';
+import { NgZorroAntdModule } from '../../components/ng-zorro-antd.module';
 import { EchartsModule } from './echarts/echarts.component';
 import { UIGridModule } from './ui-grid/ui-grid.component';
 import { ShipperSelectModule } from "./shipper-select/shipper-select.component";
@@ -29,6 +30,7 @@ import { AreaSelectModule } from './area-select/area-select.component';
 import { AbnormalSelectModule } from './abnormal-select/abnormal-select.component';
 import { DepartmentSelectModule } from './department-select/departement-select.component';
 import { CitySelectModule } from './city-select/city-select.component';
+import { MetaSelectModule } from './meta-select/meta-select.component';
 // ---------------------------------------------------------
 // | Exports
 // ---------------------------------------------------------
@@ -37,7 +39,7 @@ export * from './upload/interface';
 
 // Modules
 export { GoodSelectModule } from './good-select/good-select.component';
-export { NgZorroAntdModule } from '../components/ng-zorro-antd.module';
+export { NgZorroAntdModule } from '../../components/ng-zorro-antd.module';
 export { EchartsModule } from './echarts/echarts.component';
 export { UIGridModule } from './ui-grid/ui-grid.component';
 export { ShipperSelectModule } from "./shipper-select/shipper-select.component";
@@ -55,9 +57,10 @@ export { CitySelectModule } from './city-select/city-select.component';
 // Components
 
 // Services
+export { API } from './services/api';
 
 // Tokens (eg. global services' config)
-export { NzRootConfig } from '../components/ng-zorro-antd.module';
+export { NzRootConfig } from '../../components/ng-zorro-antd.module';
 
 // ---------------------------------------------------------
 // | Root module
@@ -80,6 +83,7 @@ export { NzRootConfig } from '../components/ng-zorro-antd.module';
     AbnormalSelectModule,
     AreaSelectModule,
     DepartmentSelectModule,
+    MetaSelectModule,
     CitySelectModule
   ]
 })
