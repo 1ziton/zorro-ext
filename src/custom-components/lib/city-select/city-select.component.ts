@@ -525,7 +525,6 @@ export class CitySelectComponent implements OnInit, AfterViewInit, ControlValueA
       values.push(v.code);
     });
     values = values.join(',');
-    // let values = _.map(this.result, 'code').join(',');
     let len = this.result.length;
     if (len < this.maxNum) {
       return true;
