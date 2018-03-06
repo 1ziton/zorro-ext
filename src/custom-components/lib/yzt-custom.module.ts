@@ -31,6 +31,7 @@ import { AbnormalSelectModule } from './abnormal-select/abnormal-select.componen
 import { DepartmentSelectModule } from './department-select/departement-select.component';
 import { CitySelectModule } from './city-select/city-select.component';
 import { MetaSelectModule } from './meta-select/meta-select.component';
+import { YztTabsModule } from "./1ziton-tabs/nz-tabs.module";
 // ---------------------------------------------------------
 // | Exports
 // ---------------------------------------------------------
@@ -84,7 +85,8 @@ export { NzRootConfig } from '../../components/ng-zorro-antd.module';
     AreaSelectModule,
     DepartmentSelectModule,
     MetaSelectModule,
-    CitySelectModule
+    CitySelectModule,
+    YztTabsModule
   ]
 })
 export class YztCustomModule {
