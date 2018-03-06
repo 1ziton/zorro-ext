@@ -1,3 +1,5 @@
+import { YztTabsDemoModule } from "./custom-demo/yzt-tabs/1ziton-tabs-demo.module";
+
 export const ROUTER_LIST = {
   'intro'     : [
     {
@@ -99,6 +101,11 @@ export const ROUTER_LIST = {
           'label'       : 'Meta',
           'path'        : 'components/yzt-meta',
           'zh'          : '字典'
+        },
+        {
+          'label'       : 'Tabs',
+          'path'        : 'components/yzt-tabs',
+          'zh'          : '导航栏'
         },
       ]
     },
@@ -672,6 +679,10 @@ export const DEMO_ROUTES = [
   },{
     'path'        : 'components/yzt-area-multiple',
     'loadChildren': './custom-demo/city-select/city-select-demo.module#CitySelectDemoModule',
+  },
+  {
+    'path'        : 'components/yzt-tabs',
+    'loadChildren': './custom-demo/yzt-tabs/1ziton-tabs-demo.module#YztTabsDemoModule',
   }
 ];
 

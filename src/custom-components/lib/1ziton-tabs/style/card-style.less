@@ -1,0 +1,239 @@
+@import "../../../../components/style/themes/default";
+@import "../../../../components/style/mixins/index";
+@tab-prefix-cls: ~"yzt-tabs";
+
+// card style
+.@{tab-prefix-cls} {
+  &&-card > &-bar &-nav-container {
+    height: 32px;
+  }
+  &&-card > &-bar &-ink-bar {
+    visibility: hidden;
+  }
+  &&-card > &-bar &-tab {
+    margin: 0;
+    border: @border-width-base @border-style-base @border-color-base;
+    border-bottom: 0;
+    border-radius: @border-radius-base @border-radius-base 0 0;
+    transition: all 0.3s @ease-in-out;
+    background: @tabs-card-head-background;
+    margin-right: 2px;
+  }
+  &&-card > &-bar &-tab {
+    padding: 5px 16px 4px;
+    transition: all 0.3s @ease-in-out;
+  }
+  &&-card > &-bar &-tab-active {
+    background: @component-background;
+    border-color: @border-color-base;
+    color: @primary-color;
+    padding-bottom: 5px;
+  }
+  &&-card > &-bar &-tab-inactive {
+    padding: 0;
+  }
+  &&-card > &-bar &-nav-wrap {
+    margin-bottom: 0;
+  }
+  &&-card > &-bar &-tab .@{iconfont-css-prefix}-close {
+    color: @text-color-secondary;
+    transition: all .3s;
+    .iconfont-size-under-12px(10px);
+    margin-right: 0;
+    opacity: 0;
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    margin-top: -5px;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 2px;
+    width: 14px;
+    height: 14px;
+    line-height: 1;
+    &:hover {
+      color: @heading-color;
+    }
+  }
+
+  &&-card &-content > &-tabpane,
+  &&-editable-card &-content > &-tabpane {
+    transition: none !important;
+    &-inactive {
+      overflow: hidden;
+    }
+  }
+
+  &&-card > &-bar &-tab:hover .@{iconfont-css-prefix}-close {
+    opacity: 1;
+  }
+
+  &-extra-content {
+    line-height: 32px;
+
+    .@{tab-prefix-cls}-new-tab {
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: @border-radius-base;
+      border: @border-width-base @border-style-base @border-color-base;
+      font-size: @font-size-base;
+      .iconfont-size-under-12px(10px);
+      color: @text-color-secondary;
+      transition: all .3s;
+      &:hover {
+        color: @primary-color;
+        border-color: @primary-color;
+      }
+    }
+  }
+
+  // https://github.com/ant-design/ant-design/issues/4669
+  &-vertical&-card > .@{tab-prefix-cls}-bar {
+    .@{tab-prefix-cls}-nav-container {
+      height: auto;
+    }
+    .@{tab-prefix-cls}-tab {
+      border-bottom: @border-width-base @border-style-base @border-color-base;
+      margin-bottom: 8px;
+      &-active {
+        padding-bottom: 4px;
+      }
+      &:last-child {
+        margin-bottom: 8px;
+      }
+    }
+    .@{tab-prefix-cls}-new-tab {
+      width: 90%;
+    }
+  }
+
+  &-vertical&-card&-left > .@{tab-prefix-cls}-bar {
+    .@{tab-prefix-cls}-nav-wrap {
+      margin-right: 0;
+    }
+    .@{tab-prefix-cls}-tab {
+      border-right: 0;
+      border-radius: @border-radius-base 0 0 @border-radius-base;
+      margin-right: 1px;
+      &-active {
+        margin-right: -1px;
+        padding-right: 18px;
+      }
+    }
+  }
+
+  &-vertical&-card&-right > .@{tab-prefix-cls}-bar {
+    .@{tab-prefix-cls}-nav-wrap {
+      margin-left: 0;
+    }
+    .@{tab-prefix-cls}-tab {
+      border-left: 0;
+      border-radius: 0 @border-radius-base @border-radius-base 0;
+      margin-left: 1px;
+      &-active {
+        margin-left: -1px;
+        padding-left: 18px;
+      }
+    }
+  }
+  /*------------*/
+  .yzt-tabs-bar {
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 16px;
+    outline: none;
+    -webkit-transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  .nz-tabs-nav-container {
+    background: linear-gradient(0, #fff 21% , #EFEFEF 153%);
+    height: 37px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    border-bottom: 1px solid #DCDCDC;
+    white-space: nowrap;
+    margin-bottom: -1px;
+    -webkit-transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    zoom: 1;
+  }
+  .ant-tabs-nav-wrap {
+    overflow: hidden;
+    margin-bottom: -1px;
+  }
+  .ant-tabs-nav-scroll {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ant-tabs-nav {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 0;
+    -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    position: relative;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    .nz-tabs-tab {
+      display: inline-block;
+      height: 100%;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      height: 37px;
+      position: relative;
+      padding: 8px 20px;
+      -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+  .ant-tabs-nav .yzt-tabs-tab-active {
+    background: linear-gradient(0, #EBEEF3 60% , #B9BABE 153%);
+    border-bottom: 1px solid #DCDCDC;
+    .ng-star-inserted {
+      width: 105px;
+    }
+    .anticon {
+      border: 1px solid #000;
+      background: #000;
+    }
+  }
+  .nz-tabs-tab .ng-star-inserted {
+    width: 105px;
+    text-align: center;
+  }
+  .anticon {
+    float: right;
+    margin-top: 2px;
+    padding-right: 1px;
+    margin-right: 5px;
+    display: inline-block;
+    font-style: normal;
+    vertical-align: baseline;
+    text-align: center;
+    text-transform: none;
+    border-radius: 8px;
+    line-height: 1;
+    border: 1px solid #CFCDCE;
+    background: #CFCDCE;
+    color: #fff;
+    line-height: 16px;
+    width: 16px;
+    height: 16px;
+    font-weight: bold;
+    font-size: 12px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
