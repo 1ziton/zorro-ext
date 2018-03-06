@@ -20,6 +20,7 @@ import { GridUtilService } from './share/grid-util.service';
 import { API } from '../services/api';
 import { DirectivesModule } from '../share/directives/yzt-directives.modules';
 import { YZTViewerDirectiveModule } from '../yzt-viewer/yzt-viewer.directive';
+import { Subject } from 'rxjs/Subject';
 
 interface PageData {
     content: Array<any>;
@@ -40,8 +41,8 @@ export interface PageIndexAndSize {
 
 @Component({
     selector: `yzt-grid`,
-    templateUrl: `ui-grid.component.html`,
-    styleUrls: [`ui-grid.component.scss`]
+    templateUrl: `yzt-grid.component.html`,
+    styleUrls: [`yzt-grid.component.scss`]
 })
 export class UIGridComponent {
     @ViewChild('gridImg', { read: ViewContainerRef }) gridImg: ViewContainerRef;
@@ -78,6 +79,9 @@ export class UIGridComponent {
     _displayData = [];
     // 自定义图片实例
     _iconComp = {};
+    // 表头搜索
+    _searchCustom: { [k: string]: TemplateRef<any> } = {};
+    _hasSearch: number;
 
     set editCol(show: boolean) {
         if (show) {
@@ -113,7 +117,7 @@ export class UIGridComponent {
         for (let row of content) {
             for (let c of [].concat(this.columns).concat(this.targetColumns)) {
                 if (c.field && row[c.field] === undefined) {
-                    Object.defineProperty(row, c.field, {value: ""});
+                    Object.defineProperty(row, c.field, { value: "" });
                 }
             }
         }
@@ -140,6 +144,21 @@ export class UIGridComponent {
         }
     }
 
+    // 设置搜索
+    @Input()
+    set searchTmpl(templs: any[]) {
+        if (templs) {
+            let ref;
+            templs.forEach((templ, i) => {
+                ref = Object.keys(templ._def.references)[0].split('_')[1].toString();
+                Object.defineProperty(this._searchCustom, ref, {
+                    value: templ
+                })
+            })
+            this._hasSearch = templs.length ? 1 : 0;
+        }
+    }
+
     @Input()
     set selection(value: Array<any>) {
         // 单选接受一个对象多选接受数组
@@ -152,7 +171,8 @@ export class UIGridComponent {
 
     constructor(private util: GridUtilService,
         public _vcr: ViewContainerRef,
-        public api: API) { }
+        public api: API) {
+    }
 
     ngOnInit() {
         this.onLazyLoad();
@@ -188,6 +208,14 @@ export class UIGridComponent {
                 targetColumns: this.targetColumns
             });
         }
+    }
+
+    isNeedSearch(column: any) {
+        for (let value in column) {
+            if (column[value] && column[value].indexOf('search_') !== -1)
+                return column[value].split('_')[1];
+        }
+        return 0;
     }
 
     editChange(change: any) {

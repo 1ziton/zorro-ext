@@ -632,7 +632,7 @@ export const DEMO_ROUTES = [
   },
   {
     'path'        : 'components/yzt-grid',
-    'loadChildren': './custom-demo/ui-grid/ui-grid-demo.module#UIGridDemoModule'
+    'loadChildren': './custom-demo/yzt-grid/yzt-grid-demo.module#UIGridDemoModule'
   },
   {
     'path'        : 'components/yzt-shipper',

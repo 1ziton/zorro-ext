@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UIGridComponent } from './ui-grid.component';
+import { UIGridComponent } from './yzt-grid.component';
 
 @Component({
   selector: 'grid-icon',

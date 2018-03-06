@@ -36,6 +36,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
             [nzFilter]="_filter"
             [nzAllowClear]="_allowClear"
             (nzSearchChange)="yztSearchChange($event)"
+            (nzOpenChange)="yztOpenChange($event)"
             [(ngModel)]="value">
             <nz-option
                 #domOpt
@@ -137,7 +138,7 @@ export class ShipperSelectComponent implements ControlValueAccessor, OnInit {
         }
     }
 
-    @Output() openChange: EventEmitter<any> = new EventEmitter();
+    @Output() nzOpenChange: EventEmitter<any> = new EventEmitter();
     @Output() outOptions: EventEmitter<any> = new EventEmitter();
 
     constructor(private api: API) {
@@ -161,6 +162,10 @@ export class ShipperSelectComponent implements ControlValueAccessor, OnInit {
         this.canQuery = true;
         this.currentText = event;
         this.keyWordStream.next(event);
+    }
+
+    yztOpenChange(event) {
+        this.nzOpenChange.emit(event)
     }
 
     /** 

@@ -1,12 +1,12 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 @Component({
-  selector     : 'ui-grid-demo',
+  selector     : 'yzt-grid-demo',
   encapsulation: ViewEncapsulation.None,
-  templateUrl  : './ui-grid-demo.html',
+  templateUrl  : './yzt-grid-demo.html',
   styleUrls    : [
-    './ui-grid-demo.less',
+    './yzt-grid-demo.less',
   ]
 })
 export class UIGridDemoComponent {
-  UIGridBasicCode = require('!!raw-loader!./ui-grid-basic.component');
+  UIGridBasicCode = require('!!raw-loader!./yzt-grid-basic.component');
 }

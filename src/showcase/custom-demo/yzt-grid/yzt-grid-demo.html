@@ -10,8 +10,8 @@
   </section>
   <div nz-row [nzGutter]="8">
     <div nz-col [nzSpan]="24">
-      <nz-code-box [nzTitle]="'基本使用'" id="ui-grid-basic" [nzCode]="UIGridBasicCode">
-        <ui-grid-basic demo></ui-grid-basic>
+      <nz-code-box [nzTitle]="'基本使用'" id="yzt-grid-basic" [nzCode]="UIGridBasicCode">
+        <yzt-grid-basic demo></yzt-grid-basic>
         <div intro>
           <p>基本使用。</p>
         </div>
@@ -72,6 +72,12 @@
           <td>显示表格标题栏，配合title属性传值(string|TemplateRef)使用</td>
           <td>Boolean</td>
           <td>false</td>
+        </tr>
+        <tr>
+          <td>searchTmpl</td>
+          <td>配合columns字段传入TemplateRef，显示字段下方的搜索框</td>
+          <td>Array</td>
+          <td>-</td>
         </tr>
         <tr>
           <td>mulitipy</td>

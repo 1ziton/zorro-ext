@@ -34,8 +34,11 @@
                         <label nz-checkbox [(ngModel)]="_allChecked" [nzIndeterminate]="_indeterminate" (ngModelChange)="checkAll($event, nzTable.data)">
                         </label>
                     </th>
-                    <th nz-th *ngFor="let column of columns" [nzWidth]="column.width || '120px'">
+                    <th class="header-title" nz-th *ngFor="let column of columns" [nzWidth]="column.width || '120px'">
                         <span>{{column.header}}</span>
+                        <div [ngClass]="_hasSearch? 'templ': ''">
+                            <ng-container [ngTemplateOutlet]="_searchCustom[column.field]"></ng-container>
+                        </div>
                     </th>
                 </tr>
             </thead>
