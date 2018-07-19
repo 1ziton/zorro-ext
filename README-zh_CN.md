@@ -2,82 +2,129 @@
   <a href="http://ng.ant.design">
     <img width="230" src="https://img.alicdn.com/tfs/TB1FVMDosrI8KJjy0FhXXbfnpXa-200-200.svg">
   </a>
+  [预览地址](http://www.yztfe.top/zorro-ext)
 </p>
 
-# NG-ZORRO
-[![Travis branch](https://img.shields.io/travis/NG-ZORRO/ng-zorro-antd/master.svg?style=flat-square)](https://travis-ci.org/NG-ZORRO/ng-zorro-antd)
-[![Codecov](https://img.shields.io/codecov/c/github/NG-ZORRO/ng-zorro-antd/master.svg?style=flat-square)](https://codecov.io/gh/NG-ZORRO/ng-zorro-antd)
-[![GitHub Release Date](https://img.shields.io/github/release-date/NG-ZORRO/ng-zorro-antd.svg?style=flat-square)](https://github.com/NG-ZORRO/ng-zorro-antd/releases)
-[![Issue Stats](https://img.shields.io/issuestats/i/github/NG-ZORRO/ng-zorro-antd.svg?style=flat-square)](https://github.com/NG-ZORRO/ng-zorro-antd/issues)
-[![NPM downloads](http://img.shields.io/npm/dm/ng-zorro-antd.svg?style=flat-square)](https://npmjs.org/package/ng-zorro-antd)
-[![Gitter](https://img.shields.io/gitter/room/ng-zorro/ng-zorro-antd.svg?style=flat-square)](https://gitter.im/ng-zorro/ng-zorro-antd)
+## 现有业务组件
 
-这里是 Ant Design 的 Angular 实现，开发和服务于企业级后台产品。
-
-[README in English](README.md)
-
-## 版本
-[![npm package](https://img.shields.io/npm/v/ng-zorro-antd.svg?style=flat-square)](https://www.npmjs.org/package/ng-zorro-antd)
-
-## 支持 Angular 版本
-
-目前支持 Angular `^6.0.0` 版本。
-
-## 设计规范
-
-`ng-zorro-antd` 与 Ant Design 设计规范定期同步，你可以在线查看[同步日志](https://nz-styles-syncer.now.sh/)。
-
-## 特性
-
-- 提炼自企业级中后台产品的交互语言和视觉风格。
-- 开箱即用的高质量 Angular 组件。
-- 使用 TypeScript 构建，提供完整的类型定义文件。
-
-## 支持环境
-
-* 现代浏览器和 IE9 及以上（需要 [polyfills](https://angular.io/guide/browser-support)）。
+以下是对现有业务组件功能点，对应使用 `ZORRO` 组件封装说明。为了便于区分，公司内部扩展的业务组件都统一 `yzt-` 前缀，二次开发组件都在文档的 `YztUIComponent` 和 `YztBusinessComponent` 两个分类下
 
 
-## 安装
+* [ ]  **ui-select-box** UISelect (TODO:样式统一风格，或优化细节等)
+* [ ]  日期选择 `nz-date-picker`
+* [ ]  **yzt-grid** 表格 `nz-table` (扩展支持现有系统的悬浮列弹窗查询、图标等功能）
+* [ ]  **yzt-upload** 图片&文件上传 (`nz-upload` ）
+* [ ]  **yzt-area** 地址选择
+* [ ]  **yzt-area-multiple** (用现有地址选择组件，修改样式统一风格，或优化细节等）
+* [ ]  区域树 (`zorro v0.6.10` 缺失tree组件）
+* [ ]  字典选择 `nz-select` 扩展
+* [ ]  **yzt-department** `nz-select` (扩展自定义模板)
+* [ ]  **yzt-shipper** 发货人选择 `nz-select` 扩展
+* [ ]  **yzt-cnee** 收货人选择 `nz-select` 扩展
+* [ ]  **yzt-abnormal** 异常类型选择  `UISelect`扩展
+* [ ]  **yzt-master** 师傅名称/账号 `nz-select` 扩展
+* [ ]  **yzt-good** 品名选择 `nz-select` 扩展
+* [ ]  **yzt-repair-goods** 维修品名 `nz-select` 扩展
+* [x]  **area-down** 地址下拉输入组件 `nz-select` 扩展
+* [x]  **yzt-viewer** 图片预览组件 （可用现有指令`Viewer`）
+* [x]  **[echarts]** Echarts指令
+* [ ]  G2指令 （可扩展封装：https://antv.alipay.com/zh-cn/g2/3. /index.html ）
 
-我们强烈推荐官方的 `@angular/cli` 工具链辅助进行开发，在实际项目开发中，它可以很好的满足对 TypeScript 代码的构建、调试、代理、打包部署等一系列工程化的需求。
+## TODO
+
+记录自定义组件未修复及可以优化的地方
+
+* [ ]  拖拽表格至边缘会出现1像素震动 (drag-box.directive.ts)
+* [ ]  viewer预览组件可以扩展支持缩略图 (yzt-viewer.directive.ts)
+* [ ]  select扩展加载下拉数据loading提示动画 (yzt-viewer.directive.ts)
+* [ ]  `ui-select-box` 组件样式、细节需优化，优化后影响的组件将有`yzt-area`、`yzt-abnormal`
+
+### Edit Doc Notice
+
+#### 运行命令
+
+* **npm run site:start**   本地运行
+* **npm run doc**          打包部署
+
+#### 组件文档基于Markdown文件生成，每个组件中都必须有以下目录
+
+* **demo** 存放示例，通过.md文档生成对应的组件基本描述; .ts文件为具体的示例代码
+* 组件生成规则，每个demo的选择器命名必须以'nz-demo-[组件名]-[demo文件名]',如：'nz-demo-echart-pie', 如果选择器的名字不符合此规则会报错,同理Component名字一样,必须以'NzDemo[组件名][demo文件名]'
+* **doc**  描述组件基本属性，其中.md文件中'category'代表大类分组，'type'代表小类分组，'title'代表组件选择器
+```
+---
+category: Components-Ext
+type: Business
+title: Area-down
+---
+```
+* **index.ts** 为每个组件的入口文件
+* **index.css** 每个demo的样式如果不是用styles: ['']的内嵌式,而是用引用方式,那么此css文件必须写在domo内部
+
+### Other
+
+* 部署到github page上的docs文件是打包后的文件，这与zorro仓库上的docs（非组件类的md文档文件夹）有冲突，1ziton上的docs1就是原zorro仓库上的docs文件，故在push zorro仓库的时候要注意这个地方可能会有冲突影响，更新前把docs1文件改为docs文件
+
+## Features（y1.0.0）
+
+- 升级angular6.0版本，基于zorro1.0.0版本开发
+
+## Environment Support
+
+* Modern browsers and Internet Explorer 9+（with [polyfills](https://v2.angular.io/docs/ts/latest/guide/browser-support.html)）。
+
+## Angular Version Support
+
+* Angular`^6.0.0`
+* Zorro`^1.0.0`
+
+
+## Install
 
 ```bash
-$ ng new PROJECT_NAME
-$ cd PROJECT_NAME
-$ ng add ng-zorro-antd
+$ npm install zorro-ext --save
 ```
 
-> 如果你想了解更多CLI工具链的功能和命令，建议访问 [Angular CLI](https://github.com/angular/angular-cli) 了解更多
+## Sample Usage
 
+add scripts `ace-builds` in your `index.html` or `angular-cli.json`
 
-## 链接
+eg:
 
-- [首页](http://ng.ant.design)
-- [Angular官方文档](https://angular.io/)
-- [开发脚手架](https://cli.angular.io/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [RxJS](https://github.com/ReactiveX/rxjs)
+```html
+    <script src="./assets/ace-builds/src-noconflict/ace.js"></script>
+```
 
-## 谁在使用
+```ts
+    import { BrowserModule } from '@angular/platform-browser';
+    import { NgModule } from '@angular/core';
+    import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-- [阿里巴巴](http://www.alibaba.com/)
-- [阿里云](http://www.aliyun.com/)
+    import { AppComponent } from './app.component';
+    import { YztCustomModule } from 'zorro-ext-subin';
+    import { NgZorroAntdModule } from 'ng-zorro-antd';
+    import { HttpModule } from '@angular/http';
+    import { RouterModule, PreloadAllModules } from '@angular/router';
+    import { FormsModule } from '@angular/forms';
 
-> 如果你的公司和产品使用了 NG-ZORRO，欢迎到 [这里](https://github.com/NG-ZORRO/ng-zorro-antd/issues/1142) 留言。
+    @NgModule({
+      declarations: [
+        AppComponent
+      ],
+      imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpModule,
+        RouterModule.forRoot([], { useHash: true, preloadingStrategy: PreloadAllModules }),
+        YztCustomModule.forRoot(API, 'URL') // 由于YZT组件依赖网络请求服务，必须在外部项目导入API服务及请求地址，保持npm包纯净
+      ],
+      providers: [],
+      bootstrap: [AppComponent]
+    })
+    export class AppModule { }
+```
 
-## 如何贡献
+Important pieces to note in the AppModule: FormsModule、HttpModule、RouterModule、YztCustomModule is required in you angular project.
 
-在任何形式的参与前，请先阅读 [贡献者文档](https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/CONTRIBUTING.md)。如果你希望参与贡献，欢迎 [Pull Request](https://github.com/NG-ZORRO/ng-zorro-antd/pulls)，或给我们 [报告 Bug](http://ng.ant.design/issue-helper/#/new-issue)。
-
-> 强烈推荐阅读 [《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way)(**本指南不提供此项目的实际支持服务！**)、[《如何向开源社区提问题》](https://github.com/seajs/seajs/issues/545) 和 [《如何有效地报告 Bug》](http://www.chiark.greenend.org.uk/%7Esgtatham/bugs-cn.html)、[《如何向开源项目提交无法解答的问题》](https://zhuanlan.zhihu.com/p/25795393)，更好的问题更容易获得帮助。
-
-## 社区互助
-
-如果您在使用的过程中碰到问题，可以通过下面几个途径寻求帮助，同时我们也鼓励资深用户通过下面的途径给新人提供帮助。
-
-通过 Stack Overflow 或者 Segment Fault 提问时，建议加上 `ng-zorro` 标签。
-
-1. [<img alt="Stack Overflow" src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.svg?v=2bb144720a66" width="140" />](https://stackoverflow.com/questions/tagged/ng-zorro)（English）
-2. [<img alt="Segment Fault" src="http://static.segmentfault.com/global/img/logo.svg" width="100" />](https://segmentfault.com/t/ng-zorro)（中文）
-3. [![Gitter](https://img.shields.io/gitter/room/ng-zorro/ng-zorro-antd.svg?style=flat-square)](https://gitter.im/ng-zorro/ng-zorro-antd)
+You can import independent component like CitySelectComponent in your modu
