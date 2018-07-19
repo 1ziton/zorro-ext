@@ -1,0 +1,32 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": ".",
+    "module": "es2015",
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "ng-zorro-antd": [ "../../components/ng-zorro-antd.module.ts" ],
+      "ng-zorro-antd-ext": [ "../../components-ext/lib/yzt-custom.module.ts" ],
+      "ngx-color/sketch": [ "../../node_modules/ngx-color/sketch" ],
+      "@zorro": [ "components/" ],
+      "@zorro/*": [ "components/*" ],
+      "@zorro-ext": [ "components-ext/" ],
+      "@zorro-ext/*": [ "components-ext/*" ],
+      "@env": [ "environments/" ],
+      "@env/*": [ "environments/*" ],
+      "@services": [ "app/share/services/" ],
+      "@services/*": [ "app/share/services/*" ]
+    }
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ],
+  "include": [
+    "../src/**/*"
+  ],
+  "strictNullChecks": true
+}

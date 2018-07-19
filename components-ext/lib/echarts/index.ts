@@ -1,0 +1,1 @@
+import { EchartsModule, EchartsDirective } from "./echarts.component";
