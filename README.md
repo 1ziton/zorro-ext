@@ -2,6 +2,7 @@
   <a href="http://ng.ant.design">
     <img width="230" src="https://img.alicdn.com/tfs/TB1FVMDosrI8KJjy0FhXXbfnpXa-200-200.svg">
   </a>
+  <h3 style="text-align: center;"><a href="https://www.yztfe.top/zorro-ext">预览地址</a></h3>
 </p>
 
 ## 现有业务组件
@@ -26,7 +27,7 @@
 * [ ]  **yzt-repair-goods** 维修品名 `nz-select` 扩展
 * [x]  **area-down** 地址下拉输入组件 `nz-select` 扩展
 * [x]  **yzt-viewer** 图片预览组件 （可用现有指令`Viewer`）
-* [ ]  **[echarts]** Echarts指令
+* [x]  **[echarts]** Echarts指令
 * [ ]  G2指令 （可扩展封装：https://antv.alipay.com/zh-cn/g2/3. /index.html ）
 
 ## TODO
