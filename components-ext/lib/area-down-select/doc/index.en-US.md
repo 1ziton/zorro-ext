@@ -4,7 +4,7 @@ type: Business
 title: Area-down
 ---
 
-Area-down
+area-down
 
 ## API
 

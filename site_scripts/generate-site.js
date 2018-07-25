@@ -41,6 +41,12 @@ rootDir_ext.forEach(componentName => {
   if (componentName === 'style' || componentName === 'core' || componentName === 'locale' || componentName === 'i18n' || componentName === 'services') {
     return;
   }
+  // 整体复制ext-share文件
+  if (componentName === 'ext-share') {
+    fs.mkdirSync(path.join(showCaseTargetPath, componentName));
+    travel(componentName);
+    return;
+  }
   if (fs.statSync(componentDirPath).isDirectory()) {
     // 创建site->${component}文件夹
     const showCaseComponentPath = path.join(showCaseTargetPath, componentName);
@@ -60,6 +66,11 @@ rootDir_ext.forEach(componentName => {
           demoMap[nameKey]['enCode'] = generateCodeBox(componentName, nameKey, demoMap[nameKey].meta.title["en-US"], demoMap[nameKey].en, demoMap[nameKey].meta.iframe);
           demoMap[nameKey]['zhCode'] = generateCodeBox(componentName, nameKey, demoMap[nameKey].meta.title["zh-CN"], demoMap[nameKey].zh, demoMap[nameKey].meta.iframe);
         }
+        if (/.component.ts$/.test(demo)) {
+          const nameKey = nameWithoutSuffixUtil(demo);
+          fs.writeFileSync(path.join(showCaseComponentPath, demo), String(fs.readFileSync(path.join(demoDirPath, demo))));
+          return;
+        }
         if (/.ts$/.test(demo)) {
           const nameKey = nameWithoutSuffixUtil(demo);
           demoMap[nameKey].ts = String(fs.readFileSync(path.join(demoDirPath, demo)));
@@ -72,7 +83,7 @@ rootDir_ext.forEach(componentName => {
         }
       });
     }
-    // 处理components->${component}->doc文件夹
+    // 处理components-ext->${component}->doc文件夹
     const result = {
       name: componentName,
       docZh: parseDocMdUtil(fs.readFileSync(path.join(componentDirPath, 'doc/index.zh-CN.md')), `components/${componentName}/doc/index.zh-CN.md`),
@@ -80,7 +91,12 @@ rootDir_ext.forEach(componentName => {
       demoMap: demoMap
     };
     componentsMap[componentName] = result.docZh.meta;
-
+    // 处理components-ext->${component}->share文件夹
+    const shareDirPath = path.join(componentDirPath, 'share');
+    if (fs.existsSync(shareDirPath)) {
+      fs.mkdirSync(path.join(showCaseTargetPath, `${componentName}/share`));
+      travel(`${componentName}/share`);
+    }
     generateDemo(showCaseComponentPath, result);
   }
 });
@@ -159,4 +175,19 @@ if (!isSyncSpecific) {
   generateRoutes(showCaseTargetPath, componentsMap, docsMeta);
 }
 
-
+// component-ext的share文件复制粘贴
+function travel(dirName) {
+  const directivePath = path.resolve(rootPath_ext, dirName);
+  fs.readdirSync(directivePath).forEach(function (file) {
+    const sourcePath = path.resolve(directivePath, file);
+    const targetPath = path.resolve(showCaseTargetPath, `${dirName}/${file}`);
+    if (fs.statSync(sourcePath).isFile()) {
+      const fileBinary = fs.readFileSync(sourcePath);
+      fs.writeFileSync(targetPath, fileBinary);
+    } else {
+      fs.mkdirSync(targetPath);
+      const tempName = `${dirName}/${file}`;
+      travel(tempName);
+    }
+  });
+}

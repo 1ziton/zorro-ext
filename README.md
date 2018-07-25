@@ -9,10 +9,16 @@
 
 以下是对现有业务组件功能点，对应使用 `ZORRO` 组件封装说明。为了便于区分，公司内部扩展的业务组件都统一 `yzt-` 前缀，二次开发组件都在文档的 `YztUIComponent` 和 `YztBusinessComponent` 两个分类下
 
+# UI Component
+* [x]  **yzt-viewer** 图片预览组件 （可用现有指令`Viewer`）
+* [x]  **[echarts]** Echarts指令
+* [ ]  G2指令 （可扩展封装：https://antv.alipay.com/zh-cn/g2/3. /index.html ）
 
+# UI Component
+* [x]  **yzt-grid** 表格 `nz-table` (扩展支持现有系统的悬浮列弹窗查询、图标等功能）
+* [x]  **area-down** 地址下拉输入组件 `nz-select` 扩展
 * [ ]  **ui-select-box** UISelect (TODO:样式统一风格，或优化细节等)
 * [ ]  日期选择 `nz-date-picker`
-* [ ]  **yzt-grid** 表格 `nz-table` (扩展支持现有系统的悬浮列弹窗查询、图标等功能）
 * [ ]  **yzt-upload** 图片&文件上传 (`nz-upload` ）
 * [ ]  **yzt-area** 地址选择
 * [ ]  **yzt-area-multiple** (用现有地址选择组件，修改样式统一风格，或优化细节等）
@@ -25,10 +31,6 @@
 * [ ]  **yzt-master** 师傅名称/账号 `nz-select` 扩展
 * [ ]  **yzt-good** 品名选择 `nz-select` 扩展
 * [ ]  **yzt-repair-goods** 维修品名 `nz-select` 扩展
-* [x]  **area-down** 地址下拉输入组件 `nz-select` 扩展
-* [x]  **yzt-viewer** 图片预览组件 （可用现有指令`Viewer`）
-* [x]  **[echarts]** Echarts指令
-* [ ]  G2指令 （可扩展封装：https://antv.alipay.com/zh-cn/g2/3. /index.html ）
 
 ## TODO
 
@@ -59,7 +61,8 @@ title: Area-down
 ---
 ```
 * **index.ts** 为每个组件的入口文件
-* **index.css** 每个demo的样式如果不是用styles: ['']的内嵌式,而是用引用方式,那么此css文件必须写在domo内部
+* **index.css** 每个demo的样式如果不是用styles: ['']的内嵌式,而是用引用方式,那么此css文件必须写在__domo__内部
+* **share** share文件夹用来存放与对应组件相关的逻辑代码，在运行过程必须注意引入的路径，因为生成site文件夹后，目录结构跟开发过程前不一样，参考yzt-grid组件GridUtilService的导入
 
 ### Other
 
