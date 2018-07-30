@@ -2,7 +2,7 @@
   <a href="http://ng.ant.design">
     <img width="230" src="https://img.alicdn.com/tfs/TB1FVMDosrI8KJjy0FhXXbfnpXa-200-200.svg">
   </a>
-  <h3 style="text-align: center;"><a href="https://www.yztfe.top/zorro-ext">预览地址</a></h3>
+  <h3 style="text-align: center"><a href="http://www.yztfe.top/zorro-ext">预览地址</a></h3>
 </p>
 
 ## 现有业务组件
@@ -14,7 +14,7 @@
 * [x]  **[echarts]** Echarts指令
 * [ ]  G2指令 （可扩展封装：https://antv.alipay.com/zh-cn/g2/3. /index.html ）
 
-# UI Component
+# Business Component
 * [x]  **yzt-grid** 表格 `nz-table` (扩展支持现有系统的悬浮列弹窗查询、图标等功能）
 * [x]  **area-down** 地址下拉输入组件 `nz-select` 扩展
 * [ ]  **ui-select-box** UISelect (TODO:样式统一风格，或优化细节等)
@@ -25,7 +25,7 @@
 * [ ]  区域树 (`zorro v0.6.10` 缺失tree组件）
 * [ ]  字典选择 `nz-select` 扩展
 * [ ]  **yzt-department** `nz-select` (扩展自定义模板)
-* [ ]  **yzt-shipper** 发货人选择 `nz-select` 扩展
+* [x]  **yzt-shipper** 发货人选择 `nz-select` 扩展
 * [ ]  **yzt-cnee** 收货人选择 `nz-select` 扩展
 * [ ]  **yzt-abnormal** 异常类型选择  `UISelect`扩展
 * [ ]  **yzt-master** 师傅名称/账号 `nz-select` 扩展
@@ -81,7 +81,6 @@ title: Area-down
 * Angular`^6.0.0`
 * Zorro`^1.0.0`
 
-
 ## Install
 
 ```bash
@@ -120,14 +119,10 @@ eg:
         FormsModule,
         HttpModule,
         RouterModule.forRoot([], { useHash: true, preloadingStrategy: PreloadAllModules }),
-        YztCustomModule.forRoot(API, 'URL') // 由于YZT组件依赖网络请求服务，必须在外部项目导入API服务及请求地址，保持npm包纯净
+        YztCustomModule.forRoot(API, 'URL') // 由于YZT组件依赖其他网络地址请求服务，必须在外部项目导入API服务及请求地址，保持npm包纯净
       ],
       providers: [],
       bootstrap: [AppComponent]
     })
     export class AppModule { }
 ```
-
-Important pieces to note in the AppModule: FormsModule、HttpModule、RouterModule、YztCustomModule is required in you angular project.
-
-You can import independent component like CitySelectComponent in your modu
