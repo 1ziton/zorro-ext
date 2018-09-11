@@ -37,6 +37,9 @@ rootDir_ext.forEach(componentName => {
       return;
     }
   }
+  if(componentName === 'share') {
+    return;
+  }
   const componentDirPath = path.join(rootPath_ext, componentName);
   if (componentName === 'style' || componentName === 'core' || componentName === 'locale' || componentName === 'i18n' || componentName === 'services') {
     return;

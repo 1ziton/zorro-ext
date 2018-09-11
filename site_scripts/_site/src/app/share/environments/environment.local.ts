@@ -11,10 +11,10 @@ export const environment = {
   dev: true,
   test: false,
   hmr: false,
-  IPS_LOGIN_ACCOUNT: '18300000000',
-  IPS_BASE_URL: 'http://192.168.100.90:11101/',
-  PASSPORT_URL: "http://192.168.100.38:7800/",
-  API_BASE_URL: 'http://192.168.100.38:7600/api/', // 测试backend （后期7777端口对外不可访问）
+  IPS_LOGIN_ACCOUNT: '17000000001',
+  IPS_BASE_URL: 'https://uatcore.1ziton.com/api/core/',
+  API_BASE_URL: 'https://uatgateway.1ziton.com/api/',
+  PASSPORT_URL: 'https://uatpassport.1ziton.com/'
   // API_BASE_URL: "https://yapi.1ziton.com/mock/29/api/" // yapi mock
 
   // API_BASE_URL:'http://192.168.3.101:7777/api/', // 张思源backend

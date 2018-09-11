@@ -5,10 +5,10 @@ import { NzMessageService } from '../../../../components/ng-zorro-antd.module';
   selector: 'nz-demo-shipper-select-custom-template',
   template: `
    <yzt-shipper [(ngModel)]="value" [customTemplate]="content"  [valueType]="'object'">
-    <ng-template #content let-name="name" let-mobile="mobile">
+    <ng-template #content let-name="option.name" let-telephone="option.telephone">
       <div class="wrap">
         <span class="font-style border-right">{{name}}</span>
-        <span class="font-style">{{mobile}}</span>
+        <span class="font-style">{{telephone}}</span>
       </div>
     </ng-template>
   </yzt-shipper>

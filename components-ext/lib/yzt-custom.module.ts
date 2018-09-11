@@ -24,6 +24,9 @@ import { CustomTemplateModule } from './yzt-grid/demo/custom-template.component'
 import { GridIconModule } from './yzt-grid/demo/grid-icon.component';
 import { GridIconComponent } from './yzt-grid/demo/grid-icon.component';
 import { ShipperSelectModule } from './shipper-select/shipper-select.component';
+import { StandardGoodModule } from './standard-good/standard-good.component';
+import { AreaSelectModule } from './area-select/area-select.component';
+import { UISelectBoxModule } from './share/select-box/select-box.component';
 // ---------------------------------------------------------
 // | Exports
 // ---------------------------------------------------------
@@ -37,6 +40,9 @@ export { EchartsModule } from './echarts/echarts.component';
 export { DirectivesModule } from './ext-share/directives/yzt-directives.module';
 export { UIGridModule } from './yzt-grid/yzt-grid.component';
 export { ShipperSelectModule } from './shipper-select/shipper-select.component';
+export { StandardGoodModule } from './standard-good/standard-good.component';
+export { AreaSelectModule } from './area-select/area-select.component';
+export { UISelectBoxModule } from './share/select-box/select-box.component';
 // Components
 // Services
 
@@ -56,7 +62,10 @@ export { ShipperSelectModule } from './shipper-select/shipper-select.component';
     UIGridModule,
     ShipperSelectModule,
     CustomTemplateModule,
-    GridIconModule
+    StandardGoodModule,
+    GridIconModule,
+    AreaSelectModule,
+    UISelectBoxModule
   ]
 })
 export class ZorroExtModule {
