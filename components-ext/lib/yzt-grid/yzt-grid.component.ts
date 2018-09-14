@@ -60,6 +60,7 @@ export class UIGridComponent {
     _fixScrollY: string | number;
     _title = '';
     _titleTpl: TemplateRef<any>;
+    _extraTitleTpl: TemplateRef<any> = null; // 表格thead和tbody之间
     _custom_popoverTpl: TemplateRef<any>;
     _exportLoading = false;
     _editCol = false;
@@ -223,6 +224,14 @@ export class UIGridComponent {
     // 设置卡片
     @Input() set csPopover(value: TemplateRef<void>) {
         this._custom_popoverTpl = value;
+    }
+
+    // 设置表格行下方区域,表格thead和tbody之间
+    @Input()
+    set extraTitle(value: string | TemplateRef<void>) {
+      if (value instanceof TemplateRef) {
+        this._extraTitleTpl = value;
+      }
     }
 
     // 设置搜索

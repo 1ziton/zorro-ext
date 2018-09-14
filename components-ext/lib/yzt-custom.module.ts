@@ -27,6 +27,7 @@ import { ShipperSelectModule } from './shipper-select/shipper-select.component';
 import { StandardGoodModule } from './standard-good/standard-good.component';
 import { AreaSelectModule } from './area-select/area-select.component';
 import { UISelectBoxModule } from './share/select-box/select-box.component';
+import { YztUploadModule } from './yzt-upload/yzt-upload.module';
 // ---------------------------------------------------------
 // | Exports
 // ---------------------------------------------------------
@@ -43,6 +44,7 @@ export { ShipperSelectModule } from './shipper-select/shipper-select.component';
 export { StandardGoodModule } from './standard-good/standard-good.component';
 export { AreaSelectModule } from './area-select/area-select.component';
 export { UISelectBoxModule } from './share/select-box/select-box.component';
+export { YztUploadModule } from './yzt-upload/yzt-upload.module';
 // Components
 // Services
 
@@ -65,7 +67,8 @@ export { UISelectBoxModule } from './share/select-box/select-box.component';
     StandardGoodModule,
     GridIconModule,
     AreaSelectModule,
-    UISelectBoxModule
+    UISelectBoxModule,
+    YztUploadModule
   ]
 })
 export class ZorroExtModule {

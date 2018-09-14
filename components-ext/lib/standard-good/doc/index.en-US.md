@@ -8,7 +8,7 @@ standard-good
 
 ## API
 
-### nz-spin
+### standard-good
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

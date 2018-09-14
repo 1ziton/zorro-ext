@@ -29,6 +29,7 @@ cols: 1
 | `scroll` | 表格内容固定宽高 | Object eg:{x: '600px', y: '360px'} | - |
 | `title` | 表格头部扩展 | TemplateRef/String | - |
 | `csPopover` | 悬浮弹窗(配合columns的popover使用) | TemplateRef | - |
+| `extraTitle` | 表头和内容之间可自定义行，类似Title | TemplateRef | - |
 | `colColor` | 根据行状态更换行颜色，现支持时效预警（unnormal,prewarning,warning,timeOut），正常与删除状态（delete）| ```{field: "status", normal: "normal"}```| - |
 | `selectionChange` | 选中列表数据的回调 | callback | (Output) |
 | `cellClick` | 点击一条列表数据的回调 | fn(event: Event, row: any, field: any) | (Output) |

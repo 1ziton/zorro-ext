@@ -9,7 +9,7 @@ subtitle: 发货人下拉选择组件
 
 ## API
 
-### area-down
+### yzt-shipper
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

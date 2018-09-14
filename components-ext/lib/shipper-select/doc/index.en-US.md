@@ -8,7 +8,7 @@ yzt-shipper
 
 ## API
 
-### nz-spin
+### yzt-shipper
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

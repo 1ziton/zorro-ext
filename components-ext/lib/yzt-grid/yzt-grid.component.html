@@ -47,6 +47,11 @@
             </tr>
         </thead>
         <tbody>
+            <tr *ngIf="_extraTitleTpl" style="background-color: #fcfcfc">
+                <th colspan="10">
+                  <ng-template [ngTemplateOutlet]="_extraTitleTpl"></ng-template>
+                </th>
+            </tr>
             <tr [style.color]="getColColor(data[colColor.field])" *ngFor="let data of nzTable.data; let ri = index" (click)="onRowSelectChange(data, ri, nzTable.data)" [class.selected]="data.checked">
                 <!-- 选择框 -->
                 <ng-template [ngIf]="!hideCheck">
