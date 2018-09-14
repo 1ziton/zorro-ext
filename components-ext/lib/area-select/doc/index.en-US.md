@@ -8,7 +8,7 @@ yzt-area
 
 ## API
 
-### viewer-content
+### yzt-area
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

@@ -1,0 +1,248 @@
+/* TurboTable */
+
+.ui-table .ui-table-thead>tr>th,
+.ui-table .ui-table-tfoot>tr>td {
+    background: #f6f7f9;
+    border: 1px solid #d9d9d9;
+    color: #1b1d1f;
+}
+
+.ui-table .ui-table-thead>tr>th {
+    padding: 10px 8px!important;
+}
+
+.ui-table .ui-table-tbody>tr {
+    background: #ffffff;
+    color: #222222;
+}
+
+.ui-table .ui-table-tbody>tr>td {
+    border: 1px solid #D5D5D5;
+    background: inherit;
+}
+
+.ui-table .ui-table-tbody>tr.ui-state-highlight {
+    background-color: #FCF5F0;
+    color: #333;
+}
+
+.ui-table .ui-table-tbody>tr.ui-contextmenu-selected {
+    background-color: #3ca1e2;
+    color: #FFFFFF;
+}
+
+.ui-table .ui-sortable-column.ui-state-highlight {
+    background-color: #FCF5F0;
+    color: #333;
+}
+
+.ui-table .ui-sortable-column:not(.ui-state-highlight):hover {
+    background: #eeeeee;
+    color: #212121;
+}
+
+.ui-table.ui-table-hoverable-rows .ui-table-tbody>tr:not(.ui-state-highlight):hover {
+    cursor: pointer;
+    background: #eeeeee;
+    color: #212121;
+}
+
+@media (max-width: 35em) {
+    .ui-table-responsive .ui-table-tbody>tr {
+        border-top: 1px solid #D5D5D5;
+        border-bottom: 1px solid #D5D5D5;
+    }
+}
+
+
+/* Row Reorder */
+
+.ui-table .ui-table-tbody>tr.ui-table-dragpoint-top>td {
+    box-shadow: inset 0 2px 0 0 #FCF5F0;
+}
+
+.ui-table .ui-table-tbody>tr.ui-table-dragpoint-bottom>td {
+    box-shadow: inset 0 -2px 0 0 #FCF5F0;
+}
+
+.ui-table {
+    position: relative
+}
+
+.ui-table table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed
+}
+
+.ui-table .ui-table-tbody>tr>td,
+.ui-table .ui-table-tfoot>tr>td,
+.ui-table .ui-table-thead>tr>th {
+    padding: .5em .5em
+}
+
+.ui-table .ui-sortable-column {
+    cursor: pointer
+}
+
+.ui-table-auto-layout>.ui-table-wrapper {
+    overflow-x: auto
+}
+
+.ui-table-auto-layout>.ui-table-wrapper>table {
+    table-layout: auto
+}
+
+.ui-table-caption,
+.ui-table-summary {
+    padding: .5em .5em;
+    text-align: center;
+    font-weight: 700
+}
+
+.ui-table-caption {
+    border-bottom: 0
+}
+
+.ui-table-summary {
+    border-top: 0
+}
+
+.ui-table .ui-paginator-top {
+    border-bottom: 0
+}
+
+.ui-table .ui-paginator-bottom {
+    border-top: 0
+}
+
+.ui-table-scrollable-footer,
+.ui-table-scrollable-header {
+    overflow: hidden;
+    border: 0
+}
+
+.ui-table-scrollable-body {
+    overflow: auto;
+    position: relative
+}
+
+.ui-table-scrollable-body>table>.ui-table-tbody>tr:first-child>td {
+    border-top: 0
+}
+
+.ui-table-virtual-table {
+    position: absolute
+}
+
+.ui-table-frozen-view .ui-table-scrollable-body {
+    overflow: hidden
+}
+
+.ui-table-frozen-view>.ui-table-scrollable-body>table>.ui-table-tbody>tr>td:last-child {
+    border-right: 0
+}
+
+.ui-table-unfrozen-view {
+    position: absolute;
+    top: 0
+}
+
+.ui-table-resizable>.ui-table-wrapper {
+    overflow-x: auto
+}
+
+.ui-table-resizable .ui-table-data>tr>td,
+.ui-table-resizable .ui-table-tfoot>tr>td,
+.ui-table-resizable .ui-table-thead>tr>th {
+    overflow: hidden
+}
+
+.ui-resizable-column {
+    background-clip: padding-box;
+    position: relative
+}
+
+.ui-table-resizable-fit .ui-resizable-column:last-child .ui-column-resizer {
+    display: none
+}
+
+.ui-table .ui-column-resizer {
+    display: block;
+    position: absolute!important;
+    top: 0;
+    right: 0;
+    margin: 0;
+    width: .5em;
+    height: 100%;
+    padding: 0;
+    cursor: col-resize;
+    border: 1px solid transparent
+}
+
+.ui-table .ui-column-resizer-helper {
+    width: 1px;
+    position: absolute;
+    z-index: 10;
+    display: none
+}
+
+.ui-table .ui-table-tbody>tr>td.ui-editing-cell {
+    padding: 0
+}
+
+.ui-table .ui-table-tbody>tr>td.ui-editing-cell p-celleditor>* {
+    width: 100%
+}
+
+.ui-table-reorder-indicator-down,
+.ui-table-reorder-indicator-up {
+    position: absolute;
+    display: none
+}
+
+.ui-table-responsive .ui-table-tbody>tr>td .ui-column-title {
+    display: none
+}
+
+@media screen and (max-width: 40em) {
+    .ui-table-responsive .ui-table-tfoot>tr>td,
+    .ui-table-responsive .ui-table-thead>tr>th {
+        display: none!important
+    }
+    .ui-table-responsive .ui-table-tbody>tr>td {
+        text-align: left;
+        display: block;
+        border: 0;
+        width: 100%!important;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        float: left;
+        clear: left
+    }
+    .ui-table-responsive .ui-table-tbody>tr>td .ui-column-title {
+        padding: .4em;
+        min-width: 30%;
+        display: inline-block;
+        margin: -.4em 1em -.4em -.4em;
+        font-weight: 700
+    }
+}
+
+.ui-table-loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
+    opacity: .1;
+    z-index: 1
+}
+
+.ui-table-loading-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    margin-top: -1em;
+    margin-left: -1em
+}

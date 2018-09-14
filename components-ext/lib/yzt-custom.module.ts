@@ -7,6 +7,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 
 // Services
 import { API } from './services/api';
+import { IpsApiService } from './share/services/ips-api.service';
 
 // Directives
 
@@ -28,6 +29,9 @@ import { StandardGoodModule } from './standard-good/standard-good.component';
 import { AreaSelectModule } from './area-select/area-select.component';
 import { UISelectBoxModule } from './share/select-box/select-box.component';
 import { YztUploadModule } from './yzt-upload/yzt-upload.module';
+import { YztLoadingModule } from './yzt-loading/yzt-loading.component';
+import { PrimengModule } from './share/primeng/primeng.module';
+import { AbnormalSelectModule } from './abnormal-select/abnormal-select.component';
 // ---------------------------------------------------------
 // | Exports
 // ---------------------------------------------------------
@@ -45,6 +49,9 @@ export { StandardGoodModule } from './standard-good/standard-good.component';
 export { AreaSelectModule } from './area-select/area-select.component';
 export { UISelectBoxModule } from './share/select-box/select-box.component';
 export { YztUploadModule } from './yzt-upload/yzt-upload.module';
+export { YztLoadingModule } from './yzt-loading/yzt-loading.component';
+export { PrimengModule } from './share/primeng/primeng.module';
+export { AbnormalSelectModule } from './abnormal-select/abnormal-select.component';
 // Components
 // Services
 
@@ -68,7 +75,10 @@ export { YztUploadModule } from './yzt-upload/yzt-upload.module';
     GridIconModule,
     AreaSelectModule,
     UISelectBoxModule,
-    YztUploadModule
+    YztUploadModule,
+    YztLoadingModule,
+    PrimengModule,
+    AbnormalSelectModule,
   ]
 })
 export class ZorroExtModule {
@@ -77,6 +87,7 @@ export class ZorroExtModule {
       ngModule: ZorroExtModule,
       providers: [
         ApiService,
+        IpsApiService,
         { provide: API, useClass: CustomAPI },
         { provide: 'API_BASE_URL', useValue: API_BASE_URL }
       ]

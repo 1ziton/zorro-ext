@@ -1,0 +1,59 @@
+{
+    "resultCode": "200",
+    "data": [{
+        "id": "aaaaaa",
+        "label": "或（OR）",
+        "condition": "or",
+        "data": "or",
+        "children": [{
+                "id": "xxxxx",
+                "parentId": "aaaaaa",
+                "label": "且（AND）",
+                "condition": "and",
+                "data": "and",
+                "children": [{
+                        "id": "xxxxxxx1",
+                        "parentId": "xxxxx",
+                        "label": "Expenses.doc",
+                        "data": "Expenses Document"
+                    },
+                    {
+                        "id": "xxxxx2",
+                        "parentId": "xxxxx",
+                        "label": "Resume.doc",
+                        "data": "Resume Document"
+                    }, {
+                        "id": "xxxxx3",
+                        "parentId": "xxxxx",
+                        "label": "",
+                        "type": "add"
+                    }
+                ]
+            },
+            {
+                "id": "dddddd",
+                "parentId": "aaaaaa",
+                "label": "且（AND）",
+                "condition": "and",
+                "data": "and",
+                "children": [{
+                    "id": "dddddd1",
+                    "parentId": "dddddd",
+                    "label": "Invoices.txt",
+                    "data": "Invoices for this month"
+                }, {
+                    "id": "dddddd2",
+                    "parentId": "dddddd",
+                    "label": "",
+                    "type": "add"
+                }]
+            },
+            {
+                "id": "aaaaaa1",
+                "parentId": "aaaaaa",
+                "label": "",
+                "type": "add"
+            }
+        ]
+    }]
+}

@@ -13,6 +13,7 @@
 * [x]  **yzt-viewer** 图片预览组件 （可用现有指令`Viewer`）
 * [x]  **[echarts]** Echarts指令
 * [ ]  G2指令 （可扩展封装：https://antv.alipay.com/zh-cn/g2/3. /index.html ）
+* [x]  **yzt-loading** 页面或组件加载效果
 
 # Business Component
 * [x]  **yzt-grid** 表格 `nz-table` (扩展支持现有系统的悬浮列弹窗查询、图标等功能）
@@ -20,9 +21,10 @@
 * [x]  **ui-select-box** UISelect (TODO:样式统一风格，或优化细节等)
 * [ ]  日期选择 `nz-date-picker`
 * [x]  **yzt-upload** 图片&文件上传 (`nz-upload` ）
-* [x]  **yzt-area** 地址选择
+* [x]  **yzt-abnormal** 异常选择 （基于ui-select-box）
+* [x]  **yzt-area** 地址选择 （基于ui-select-box）
 * [ ]  **yzt-area-multiple** (用现有地址选择组件，修改样式统一风格，或优化细节等）
-* [ ]  区域树 (`zorro v0.6.10` 缺失tree组件）
+* [x]  **p-tree**区域树 (`zorro v0.6.10` 缺失tree组件）
 * [x]  **yzt-shipper** 发货人选择 `nz-select` 扩展
 * [x]  **yzt-cnee** 收货人选择 `nz-select` 扩展
 * [ ]  **yzt-abnormal** 异常类型选择  `UISelect`扩展
