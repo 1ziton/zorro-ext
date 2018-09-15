@@ -33,7 +33,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: `standard-good`,
+  selector: `yzt-standard-good`,
   template: `
   <div class="good-select">
       <nz-select

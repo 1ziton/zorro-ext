@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'nz-demo-area-down-select-custom-template',
   template: `
-    <area-down [(ngModel)]="areaId" [customTemplate]="Tmpl" dropdownStyle="120%" placeholder="请输入目的地">
+    <yzt-area-down [(ngModel)]="areaId" [customTemplate]="Tmpl" dropdownStyle="120%" placeholder="请输入目的地">
       <ng-template #Tmpl let-name="option.name" let-code="option.code" let-index="index">
           <div class="area-wrap custom-select-wrap">
               <div class="area-title custom-select-title" *ngIf="index===0">
@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
               </div>
           </div>
       </ng-template>
-    </area-down>
+    </yzt-area-down>
     <span>{{areaId | json}}</span>
   `,
   styles: [

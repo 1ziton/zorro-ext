@@ -9,7 +9,7 @@ subtitle: 品名下拉选择组件
 
 ## API
 
-### standard-good
+### yzt-standard-good
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

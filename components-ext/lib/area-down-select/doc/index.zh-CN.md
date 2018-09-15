@@ -1,7 +1,7 @@
 ---
 category: Components-Ext
 type: Business
-title: Area-down
+title: Yzt-area-down
 subtitle: 地址下拉选择组件
 ---
 
@@ -9,7 +9,7 @@ subtitle: 地址下拉选择组件
 
 ## API
 
-### area-down
+### yzt-area-down
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

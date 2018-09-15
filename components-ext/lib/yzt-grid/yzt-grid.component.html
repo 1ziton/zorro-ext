@@ -1,7 +1,7 @@
 <div class="grid-border">
     <nz-table [nzScroll]="_scroll" #nzTable [nzShowPagination]="showPagination" nzShowSizeChanger [nzPageSizeOptions]="pageSizeValues" [nzData]="_data.content" [nzTotal]="_data.totalElements" [nzLoading]="_loading" [nzLoadingDelay]="10" [(nzPageIndex)]="pageIndex"
         [(nzPageSize)]="pageSize" (nzPageSizeChange)="pageSizeChange($event)" (nzPageIndexChange)="nzPageIndexChange($event)" [nzSize]="'middle'" [nzFrontPagination]="false" [nzTitle]="_title?_title:(_titleTpl||null)" [nzShowTotal]="totalTemplate" nzNoResult="没有记录">
-        <!-- <div class="table-title" nz-table-title *ngIf="_title || _titleTpl || buttonGather.showEditColumn || buttonGather.enableExport">
+        <div class="table-title" nz-table-title *ngIf="_title || _titleTpl || buttonGather.showEditColumn || buttonGather.enableExport">
             <ng-template #defaultTitle>
                 <div>
                     <button class="btn-editcol" nz-button [nzType]="'primary'" *ngIf="buttonGather.showEditColumn" (click)="editCol = !_editCol">
@@ -17,7 +17,7 @@
             </ng-template>
             <ng-template [ngIf]="_title">{{_title}}</ng-template>
             <ng-template [ngTemplateOutlet]="!_title && (_titleTpl || defaultTitle)"></ng-template>
-        </div> -->
+        </div>
         <thead>
             <tr>
                 <ng-template [ngIf]="!hideCheck">

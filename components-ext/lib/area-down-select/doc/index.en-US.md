@@ -1,14 +1,14 @@
 ---
 category: Components-Ext
 type: Business
-title: Area-down
+title: Yzt-area-down
 ---
 
-area-down
+yzt-area-down
 
 ## API
 
-### area-down
+### yzt-area-down
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

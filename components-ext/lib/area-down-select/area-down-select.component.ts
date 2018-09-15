@@ -19,15 +19,15 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     multi: true
 };
 @Component({
-    selector: `area-down`,
-    template: `   
+    selector: `yzt-area-down`,
+    template: `
     <div class="area-down-select">
-    <nz-select 
+    <nz-select
         class="area-down-nz-select"
         [nzServerSearch]="true"
         nzShowSearch
         [nzDropdownStyle]="_dropdownStyle"
-        [style.width]="_width" 
+        [style.width]="_width"
         [nzPlaceHolder]="placeholder"
         [nzMode]="_nzMode"
         [nzAllowClear]="_allowClear"
@@ -96,7 +96,7 @@ export class AreaDownSelectComponent implements ControlValueAccessor, OnInit {
     private onTouchedCallback: () => () => {};
     private onChangeCallback: (_: any) => () => {};
 
-    
+
     options: Array<AreaInfo> = [];
     // 单选的时候传字符串，多选传数组
     _value: string;
@@ -223,7 +223,7 @@ export class AreaDownSelectComponent implements ControlValueAccessor, OnInit {
         this.nzOpenChange.emit(nzOpen)
     }
 
-    /** 
+    /**
      * 仅作清空多选选项
      */
     clearSelect($event?: MouseEvent): void {

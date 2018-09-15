@@ -4,14 +4,14 @@ import { NzMessageService } from '../../../../components/ng-zorro-antd.module';
 @Component({
   selector: 'nz-demo-standard-good-custom-template',
   template: `
-   <standard-good [(ngModel)]="value" [customTemplate]="content"  [valueType]="'object'">
+   <yzt-standard-good [(ngModel)]="value" [customTemplate]="content"  [valueType]="'object'">
     <ng-template #content let-name="option.name" let-mobile="option.mobile">
       <div class="wrap">
         <span class="font-style border-right">{{name}}</span>
         <span class="font-style">{{mobile}}</span>
       </div>
     </ng-template>
-  </standard-good>
+  </yzt-standard-good>
   <button style="margin-top: 5px;" nz-button [nzType]="'primary'" (click)="handle()">获取品名编号</button>
 `,
   styles: [`

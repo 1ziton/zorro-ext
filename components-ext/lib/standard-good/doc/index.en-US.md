@@ -4,11 +4,11 @@ type: Business
 title: Yzt-standard-good
 ---
 
-standard-good
+yzt-standard-good
 
 ## API
 
-### standard-good
+### yzt-standard-good
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

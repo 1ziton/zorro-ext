@@ -4,7 +4,7 @@ import { NzMessageService } from '../../../../components/ng-zorro-antd.module';
 @Component({
   selector: 'nz-demo-standard-good-multiple',
   template: `
-  <standard-good [(ngModel)]="value" valueType="object" [goodMode]="'multiple'"></standard-good>
+  <yzt-standard-good [(ngModel)]="value" valueType="object" [goodMode]="'multiple'"></yzt-standard-good>
   <button style="margin-top: 5px;" nz-button [nzType]="'primary'" (click)="handle()">获取品名编号数组</button>
   `
 })
