@@ -1,7 +1,7 @@
 ---
 category: Components-Ext
 type: Business
-title: Yzt-area-down
+title: yzt-area-down
 subtitle: 地址下拉选择组件
 ---
 

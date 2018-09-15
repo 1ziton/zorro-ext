@@ -1,7 +1,7 @@
 ---
 category: Components-Ext
 type: Business
-title: Yzt-shipper
+title: yzt-shipper
 subtitle: 发货人下拉选择组件
 ---
 

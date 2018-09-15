@@ -1,7 +1,7 @@
 ---
 category: Components-Ext
 type: Business
-title: Yzt-upload
+title: yzt-upload
 ---
 
 yzt-upload

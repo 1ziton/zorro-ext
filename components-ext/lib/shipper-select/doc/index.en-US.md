@@ -1,7 +1,7 @@
 ---
 category: Components-Ext
 type: Business
-title: Yzt-shipper
+title: yzt-shipper
 ---
 
 yzt-shipper

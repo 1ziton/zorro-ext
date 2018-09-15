@@ -1,7 +1,7 @@
 ---
 category: Components-Ext
 type: Business
-title: Yzt-standard-good
+title: yzt-standard-good
 subtitle: 品名下拉选择组件
 ---
 

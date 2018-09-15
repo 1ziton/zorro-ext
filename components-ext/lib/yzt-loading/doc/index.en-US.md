@@ -1,7 +1,7 @@
 ---
 category: Components-Ext
 type: UI
-title: Yzt-loading
+title: yzt-loading
 ---
 
 yzt-loading

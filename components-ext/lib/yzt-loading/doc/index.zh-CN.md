@@ -1,7 +1,7 @@
 ---
 category: Components-Ext
 type: UI
-title: Yzt-loading
+title: yzt-loading
 subtitle: 页面或组件加载效果
 ---
 

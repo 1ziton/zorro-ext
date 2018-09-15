@@ -1,7 +1,7 @@
 ---
 category: Components-Ext
 type: Business
-title: Yzt-standard-good
+title: yzt-standard-good
 ---
 
 yzt-standard-good
